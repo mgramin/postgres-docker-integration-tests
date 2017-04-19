@@ -43,7 +43,7 @@
                                     <alias>it-database</alias>
                                     <run>
                                         <ports>
-                                            <port>5432:5432</port>
+                                            <port>8765:5432</port>
                                         </ports>
                                         <wait>
                                             <log>database system is ready to accept connections</log>
@@ -76,7 +76,7 @@
                 </executions>
                 <configuration>
                     <environmentVariables>
-                        <it-database.port>5432</it-database.port>
+                        <it-database.port>8765</it-database.port>
                     </environmentVariables>
                 </configuration>
             </plugin>

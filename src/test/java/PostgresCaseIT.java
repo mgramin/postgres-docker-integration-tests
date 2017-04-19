@@ -11,7 +11,7 @@ public class PostgresCaseIT {
 
     @Test
     public void test() throws ClassNotFoundException, SQLException {
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres","postgres", "postgres")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:8765/postgres","postgres", "postgres")) {
             Statement statement = connection.createStatement();
             statement.execute("create table test_table (id integer)");
             statement.execute("insert into test_table (id) values (1)");
