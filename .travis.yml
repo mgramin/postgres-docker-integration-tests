@@ -6,3 +6,6 @@ sudo: required
 
 services:
   - docker
+
+## Run integration tests
+script: "mvn verify"

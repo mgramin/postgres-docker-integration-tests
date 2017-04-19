@@ -21,6 +21,7 @@ public class PostgresCaseIT {
             int summ = resultSet.getInt("summ");
             assertEquals(3, summ);
         }
+        System.out.println("Test complete!");
     }
 
 }
