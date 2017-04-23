@@ -1,4 +1,6 @@
+import org.junit.Rule;
 import org.junit.Test;
+import org.testcontainers.containers.GenericContainer;
 
 import java.sql.*;
 
@@ -9,9 +11,14 @@ import static org.junit.Assert.assertEquals;
  */
 public class PostgresCaseIT {
 
+    @Rule
+    public GenericContainer postgres = new GenericContainer("postgres:9.5.4").withExposedPorts(5432);
+
     @Test
-    public void test() throws ClassNotFoundException, SQLException {
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:8765/postgres","postgres", "postgres")) {
+    public void test() throws ClassNotFoundException, SQLException, InterruptedException {
+        Thread.currentThread().sleep(5000);
+        Integer mappedPort = postgres.getMappedPort(5432);
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:" + mappedPort + "/postgres","postgres", "postgres")) {
             Statement statement = connection.createStatement();
             statement.execute("create table test_table (id integer)");
             statement.execute("insert into test_table (id) values (1)");
